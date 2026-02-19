@@ -7,13 +7,14 @@ import {
   Mail,
   Clock,
   Send,
-  CheckCircle2,
+  CheckCircle,
   Facebook,
   Twitter,
   Linkedin,
   Instagram,
   ArrowRight,
 } from "lucide-react";
+import SEO from "../components/SEO";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -89,20 +90,21 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Address",
-      content: "Dubai, United Arab Emirates",
+      content:
+        "#14 B6 Block, Xavier Business Center, Burj Nahar Mall, Al Muteena, Dubai",
       link: null,
     },
     {
       icon: Phone,
       title: "Phone",
-      content: "+971 544 018604",
-      link: "tel:+971544018604",
+      content: "+971 58 236 5647",
+      link: "tel:+971582365647",
     },
     {
       icon: Mail,
       title: "Email",
-      content: "sumon98w1@gmail.com",
-      link: "mailto:sumon98w1@gmail.com",
+      content: "info@yasiralnoorbc.com",
+      link: "mailto:info@yasiralnoorbc.com",
     },
     {
       icon: Clock,
@@ -114,17 +116,77 @@ const Contact = () => {
 
   return (
     <div>
+      <SEO
+        title="Contact Us - Get in Touch with Dubai Construction Experts"
+        description="Contact Yasir Alnoor Contracting LLC for your construction needs in Dubai UAE. Call +971 58 236 5647 or email info@yasiralnoorbc.com. Office at Al Saqr Tower, Sheikh Zayed Road."
+        keywords="contact construction company Dubai, UAE contractor contact, construction consultation, Dubai construction office, building contractor contact"
+        canonicalUrl="https://www.yasiralnoorbc.com/contact"
+        ogImage="/contact-og-image.jpg"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Yasir Alnoor Contracting LLC",
+          description:
+            "Contact Yasir Alnoor Contracting LLC for your construction needs in Dubai UAE. Call or email us for consultation.",
+          url: "https://www.yasiralnoorbc.com/contact",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Yasir Alnoor Contracting LLC",
+            url: "https://www.yasiralnoorbc.com",
+            telephone: "+971582365647",
+            email: "info@yasiralnoorbc.com",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Office 1201, Al Saqr Tower, Sheikh Zayed Road",
+              addressLocality: "Dubai",
+              addressRegion: "Dubai",
+              addressCountry: "AE",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+971582365647",
+              contactType: "customer service",
+              email: "info@yasiralnoorbc.com",
+              availableLanguage: ["English", "Arabic"],
+              hoursAvailable: "24/7",
+            },
+            openingHours: "Mo-Su 00:00-23:59",
+          },
+        }}
+      />
       {/* Page Header */}
-      <section className="bg-[#1a2744] text-white py-24 pt-32">
-        <div className="container-custom text-center">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20">
+        {/* Background with overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#005baa] via-[#1F4E79] to-[#2d3e5f]"></div>
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-[120px]"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-[150px]"></div>
+          </div>
+        </div>
+
+        <div className="container-custom relative z-10 text-center pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Get in touch with us for your next construction project
+            <span className="inline-block px-6 py-3 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+              Contact Us
+            </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Get in
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200">
+                Touch
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Ready to start your next project?
+              <span className="text-white font-semibold">
+                {" "}
+                Reach out to us today
+              </span>{" "}
+              and let's discuss how we can bring your vision to life
             </p>
           </motion.div>
         </div>
@@ -136,7 +198,7 @@ const Contact = () => {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Info Sidebar */}
             <AnimatedSection className="lg:col-span-1">
-              <div className="bg-[#1a2744] rounded-xl p-8 text-white h-full">
+              <div className="bg-[#005baa] rounded-xl p-8 text-white h-full">
                 <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
                 <p className="text-gray-300 mb-8">
                   Ready to start your project? Contact us today and let's
@@ -146,15 +208,15 @@ const Contact = () => {
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-start">
-                      <div className="w-12 h-12 bg-[#c9a961] rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
-                        <info.icon className="text-[#1a2744]" size={20} />
+                      <div className="w-12 h-12 bg-[#ffffff] rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
+                        <info.icon className="text-[#005baa]" size={20} />
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">{info.title}</h4>
                         {info.link ? (
                           <a
                             href={info.link}
-                            className="text-gray-300 hover:text-[#c9a961] transition"
+                            className="text-gray-300 hover:text-[#ffffff] transition"
                           >
                             {info.content}
                           </a>
@@ -172,25 +234,25 @@ const Contact = () => {
                   <div className="flex space-x-4">
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#c9a961] transition"
+                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
                       <Facebook size={18} />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#c9a961] transition"
+                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
                       <Twitter size={18} />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#c9a961] transition"
+                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
                       <Linkedin size={18} />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#c9a961] transition"
+                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
                       <Instagram size={18} />
                     </a>
@@ -202,7 +264,7 @@ const Contact = () => {
             {/* Contact Form */}
             <AnimatedSection className="lg:col-span-2">
               <div className="bg-gray-50 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-[#1a2744] mb-2">
+                <h3 className="text-2xl font-bold text-[#005baa] mb-2">
                   Send us a Message
                 </h3>
                 <p className="text-gray-600 mb-8">
@@ -236,7 +298,7 @@ const Contact = () => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#c9a961] focus:ring-1 focus:ring-[#c9a961] transition"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#00a2e5] focus:ring-1 focus:ring-[#00a2e5] transition"
                           placeholder="John Doe"
                         />
                       </div>
@@ -250,7 +312,7 @@ const Contact = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#c9a961] focus:ring-1 focus:ring-[#c9a961] transition"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#00a2e5] focus:ring-1 focus:ring-[#00a2e5] transition"
                           placeholder="john@example.com"
                         />
                       </div>
@@ -266,7 +328,7 @@ const Contact = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#c9a961] focus:ring-1 focus:ring-[#c9a961] transition"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#00a2e5] focus:ring-1 focus:ring-[#00a2e5] transition"
                           placeholder="+971 50 123 4567"
                         />
                       </div>
@@ -279,7 +341,7 @@ const Contact = () => {
                           value={formData.subject}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#c9a961] focus:ring-1 focus:ring-[#c9a961] transition"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#00a2e5] focus:ring-1 focus:ring-[#00a2e5] transition"
                         >
                           <option value="">Select a subject</option>
                           <option value="general">General Inquiry</option>
@@ -304,7 +366,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows="5"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#c9a961] focus:ring-1 focus:ring-[#c9a961] transition resize-none"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#00a2e5] focus:ring-1 focus:ring-[#00a2e5] transition resize-none"
                         placeholder="Tell us about your project..."
                       ></textarea>
                     </div>
@@ -335,13 +397,13 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="section-padding bg-gray-50">
+      {/* <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-12">
-            <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
+            <span className="text-[#ffffff] font-semibold text-sm uppercase tracking-wider">
               Location
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mt-4 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#005baa] mt-4 mb-4">
               Find Us
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -353,9 +415,9 @@ const Contact = () => {
           <AnimatedSection>
             <div className="bg-gray-200 rounded-xl overflow-hidden h-96 flex items-center justify-center relative">
               {/* Map Placeholder */}
-              <div className="text-center">
-                <MapPin className="mx-auto mb-4 text-[#c9a961]" size={48} />
-                <h3 className="text-xl font-bold text-[#1a2744] mb-2">
+      {/* <div className="text-center">
+                <MapPin className="mx-auto mb-4 text-[#ffffff]" size={48} />
+                <h3 className="text-xl font-bold text-[#005baa] mb-2">
                   Yasir Alnoor Contracting LLC
                 </h3>
                 <p className="text-gray-600 mb-4">
@@ -374,49 +436,7 @@ const Contact = () => {
             </div>
           </AnimatedSection>
         </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <AnimatedSection className="text-center mb-12">
-            <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
-              FAQ
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mt-4 mb-4">
-              Frequently Asked Questions
-            </h2>
-          </AnimatedSection>
-
-          <div className="max-w-3xl mx-auto">
-            {[
-              {
-                q: "How long does a typical construction project take?",
-                a: "Project duration varies based on size and complexity. A residential villa typically takes 12-18 months, while commercial projects may take 24-36 months. We provide detailed timelines during the planning phase.",
-              },
-              {
-                q: "Do you provide free consultations?",
-                a: "Yes, we offer free initial consultations to discuss your project requirements, budget, and timeline. This helps us understand your vision and provide accurate quotes.",
-              },
-              {
-                q: "Are you licensed and insured?",
-                a: "Yes, we are fully licensed by Dubai Municipality and carry comprehensive insurance coverage including liability and workers compensation insurance.",
-              },
-              {
-                q: "What areas do you serve?",
-                a: "We primarily operate across all emirates of the UAE, with major projects in Dubai, Abu Dhabi, Sharjah, and Ajman.",
-              },
-            ].map((faq, index) => (
-              <AnimatedSection key={index}>
-                <div className="bg-gray-50 rounded-lg p-6 mb-4">
-                  <h4 className="font-bold text-[#1a2744] mb-2">{faq.q}</h4>
-                  <p className="text-gray-600">{faq.a}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+      </section> */}
     </div>
   );
 };

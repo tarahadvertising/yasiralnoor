@@ -10,6 +10,7 @@ import {
   Users,
   CheckCircle,
 } from "lucide-react";
+import SEO from "../components/SEO";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -64,52 +65,73 @@ const About = () => {
     },
   ];
 
-  const milestones = [
-    {
-      year: "2010",
-      title: "Company Founded",
-      desc: "Yasir Alnoor Contracting LLC was established in Dubai.",
-    },
-    {
-      year: "2013",
-      title: "First Major Project",
-      desc: "Completed our first high-rise residential building.",
-    },
-    {
-      year: "2016",
-      title: "Expansion",
-      desc: "Expanded operations to include commercial construction.",
-    },
-    {
-      year: "2019",
-      title: "ISO Certification",
-      desc: "Achieved ISO 9001:2015 quality management certification.",
-    },
-    {
-      year: "2022",
-      title: "100th Project",
-      desc: "Celebrated completion of our 100th construction project.",
-    },
-    {
-      year: "2024",
-      title: "Industry Leader",
-      desc: "Recognized as one of the top construction companies in UAE.",
-    },
-  ];
-
   return (
     <div>
+      <SEO
+        title="About Us - Leading Construction Company in Dubai UAE"
+        description="Learn about Yasir Alnoor Contracting LLC - Dubai's trusted construction partner since 2010. 13+ years of excellence in residential, commercial, and industrial construction projects."
+        keywords="about Yasir Alnoor, construction company Dubai, UAE contractor, company history, construction expertise, Dubai construction projects, licensed contractor"
+        canonicalUrl="https://www.yasiralnoorbc.com/about"
+        ogImage="/about-og-image.jpg"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Yasir Alnoor Contracting LLC",
+          description:
+            "Learn about Yasir Alnoor Contracting LLC - Dubai's trusted construction partner since 2010. 13+ years of excellence in construction.",
+          url: "https://www.yasiralnoorbc.com/about",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Yasir Alnoor Contracting LLC",
+            foundingDate: "2010",
+            description:
+              "Leading construction company in Dubai, UAE with 13+ years of excellence",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Office 1201, Al Saqr Tower, Sheikh Zayed Road",
+              addressLocality: "Dubai",
+              addressCountry: "AE",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+971582365647",
+              contactType: "customer service",
+            },
+          },
+        }}
+      />
       {/* Page Header */}
-      <section className="bg-[#1a2744] text-white py-24 pt-32">
-        <div className="container-custom text-center">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20">
+        {/* Background with overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#005baa] via-[#1F4E79] to-[#2d3e5f]"></div>
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-[120px]"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-[150px]"></div>
+          </div>
+        </div>
+
+        <div className="container-custom relative z-10 text-center pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Building excellence through innovation and quality craftsmanship
+            <span className="inline-block px-6 py-3 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+              About Us
+            </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              About
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200">
+                Yasir Al Noor
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Leading construction excellence in the UAE with
+              <span className="text-white font-semibold">
+                {" "}
+                over 13 years of experience
+              </span>
             </p>
           </motion.div>
         </div>
@@ -120,10 +142,10 @@ const About = () => {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
-              <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
+              <span className="text-[#ffffff] font-semibold text-sm uppercase tracking-wider">
                 Who We Are
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mt-4 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#005baa] mt-4 mb-6">
                 Your Trusted Construction Partner in the UAE
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
@@ -152,34 +174,34 @@ const About = () => {
               </div>
             </AnimatedSection>
             <AnimatedSection className="relative">
-              <div className="bg-gradient-to-br from-[#1a2744] to-[#2d3e5f] rounded-2xl p-8 text-white">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center p-6 bg-white/10 rounded-lg">
-                    <Building2
-                      className="mx-auto mb-3 text-[#c9a961]"
-                      size={40}
-                    />
-                    <div className="text-3xl font-bold">100+</div>
-                    <div className="text-gray-300">Projects Completed</div>
-                  </div>
-                  <div className="text-center p-6 bg-white/10 rounded-lg">
-                    <Users className="mx-auto mb-3 text-[#c9a961]" size={40} />
-                    <div className="text-3xl font-bold">50+</div>
-                    <div className="text-gray-300">Expert Team</div>
-                  </div>
-                  <div className="text-center p-6 bg-white/10 rounded-lg">
-                    <Award className="mx-auto mb-3 text-[#c9a961]" size={40} />
-                    <div className="text-3xl font-bold">15+</div>
-                    <div className="text-gray-300">Industry Awards</div>
-                  </div>
-                  <div className="text-center p-6 bg-white/10 rounded-lg">
-                    <CheckCircle
-                      className="mx-auto mb-3 text-[#c9a961]"
-                      size={40}
-                    />
-                    <div className="text-3xl font-bold">100%</div>
-                    <div className="text-gray-300">Client Satisfaction</div>
-                  </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src="/about1.webp"
+                    alt="Construction Project 1"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src="/about2.webp"
+                    alt="Construction Project 2"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src="/about3.webp"
+                    alt="Construction Project 3"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src="/about4.webp"
+                    alt="Construction Project 4"
+                    className="w-full h-48 object-cover"
+                  />
                 </div>
               </div>
             </AnimatedSection>
@@ -193,10 +215,10 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <AnimatedSection>
               <div className="bg-white p-8 rounded-xl shadow-sm h-full">
-                <div className="w-16 h-16 bg-[#1a2744] rounded-lg flex items-center justify-center mb-6">
-                  <Eye className="text-[#c9a961]" size={32} />
+                <div className="w-16 h-16 bg-[#005baa] rounded-lg flex items-center justify-center mb-6">
+                  <Eye className="text-[#ffffff]" size={32} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a2744] mb-4">
+                <h3 className="text-2xl font-bold text-[#005baa] mb-4">
                   Our Vision
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -210,10 +232,10 @@ const About = () => {
             </AnimatedSection>
             <AnimatedSection>
               <div className="bg-white p-8 rounded-xl shadow-sm h-full">
-                <div className="w-16 h-16 bg-[#1a2744] rounded-lg flex items-center justify-center mb-6">
-                  <Target className="text-[#c9a961]" size={32} />
+                <div className="w-16 h-16 bg-[#005baa] rounded-lg flex items-center justify-center mb-6">
+                  <Target className="text-[#ffffff]" size={32} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a2744] mb-4">
+                <h3 className="text-2xl font-bold text-[#005baa] mb-4">
                   Our Mission
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -231,10 +253,10 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="section-padding bg-[#1a2744] text-white">
+      <section className="section-padding bg-[#005baa] text-white">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
+            <span className="text-[#ffffff] font-semibold text-sm uppercase tracking-wider">
               Our Values
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-4">
@@ -250,52 +272,13 @@ const About = () => {
             {coreValues.map((value, index) => (
               <AnimatedSection key={index}>
                 <div className="bg-white/5 p-8 rounded-xl hover:bg-white/10 transition duration-300 h-full">
-                  <div className="w-14 h-14 bg-[#c9a961] rounded-lg flex items-center justify-center mb-6">
-                    <value.icon className="text-[#1a2744]" size={28} />
+                  <div className="w-14 h-14 bg-[#ffffff] rounded-lg flex items-center justify-center mb-6">
+                    <value.icon className="text-[#005baa]" size={28} />
                   </div>
                   <h3 className="text-xl font-bold mb-3">{value.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
                     {value.desc}
                   </p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <AnimatedSection className="text-center mb-16">
-            <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
-              Our Journey
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mt-4 mb-4">
-              Milestones & Achievements
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              A decade of growth, innovation, and excellence in the construction
-              industry.
-            </p>
-          </AnimatedSection>
-
-          <div className="max-w-4xl mx-auto">
-            {milestones.map((milestone, index) => (
-              <AnimatedSection key={index}>
-                <div className="flex flex-col md:flex-row gap-6 mb-8 last:mb-0">
-                  <div className="md:w-32 flex-shrink-0">
-                    <div className="text-2xl font-bold text-[#c9a961]">
-                      {milestone.year}
-                    </div>
-                  </div>
-                  <div className="flex-grow pb-8 border-l-2 border-gray-200 pl-8 md:pl-0 relative">
-                    <div className="absolute -left-[9px] top-0 w-4 h-4 bg-[#c9a961] rounded-full" />
-                    <h3 className="text-xl font-bold text-[#1a2744] mb-2">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-gray-600">{milestone.desc}</p>
-                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -309,11 +292,11 @@ const About = () => {
           <AnimatedSection className="max-w-4xl mx-auto">
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-sm">
               <div className="flex flex-col md:flex-row gap-8 items-start">
-                <div className="w-24 h-24 bg-[#1a2744] rounded-full flex items-center justify-center flex-shrink-0">
-                  <Users className="text-[#c9a961]" size={40} />
+                <div className="w-24 h-24 bg-[#005baa] rounded-full flex items-center justify-center flex-shrink-0">
+                  <Users className="text-[#ffffff]" size={40} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#1a2744] mb-4">
+                  <h3 className="text-2xl font-bold text-[#005baa] mb-4">
                     Message from Leadership
                   </h3>
                   <blockquote className="text-gray-600 italic leading-relaxed mb-6">
@@ -326,8 +309,8 @@ const About = () => {
                     to guide us as we build the future of the UAE."
                   </blockquote>
                   <div>
-                    <div className="font-bold text-[#1a2744]">Yasir Alnoor</div>
-                    <div className="text-[#c9a961]">Founder & CEO</div>
+                    <div className="font-bold text-[#005baa]">Yasir Alnoor</div>
+                    <div className="text-[#ffffff]">Founder & CEO</div>
                   </div>
                 </div>
               </div>

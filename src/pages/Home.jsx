@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView, useAnimation } from "framer-motion";
 import {
@@ -17,6 +17,7 @@ import {
   Phone,
   CheckCircle2,
 } from "lucide-react";
+import SEO from "../components/SEO";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -56,6 +57,20 @@ const AnimatedSection = ({ children, className = "" }) => {
 };
 
 const Home = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const videos = ["/video1.mp4", "/video2.mp4", "/video3.mp4"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % videos.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [videos.length]);
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
   const services = [
     {
       icon: HardHat,
@@ -143,46 +158,124 @@ const Home = () => {
 
   return (
     <div>
+      <SEO
+        title="Home - Construction Excellence in Dubai UAE"
+        description="Leading construction company in Dubai, UAE. Building excellence through innovation and quality craftsmanship since 2010. Trusted contractor for residential, commercial, and industrial projects."
+        keywords="construction company Dubai, UAE contractor, residential construction, commercial building, industrial construction, renovation, remodeling, Dubai construction, building excellence"
+        canonicalUrl="https://www.yasiralnoorbc.com/"
+        ogImage="/home-og-image.jpg"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Yasir Alnoor Contracting LLC - Home",
+          description:
+            "Leading construction company in Dubai, UAE. Building excellence through innovation and quality craftsmanship since 2010.",
+          url: "https://www.yasiralnoorbc.com/",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Yasir Alnoor Contracting LLC",
+            url: "https://www.yasiralnoorbc.com",
+            telephone: "+971582365647",
+            email: "info@yasiralnoorbc.com",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Office 1201, Al Saqr Tower, Sheikh Zayed Road",
+              addressLocality: "Dubai",
+              addressCountry: "AE",
+            },
+          },
+        }}
+      />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background with overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a2744] via-[#1e3052] to-[#243657]">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-[#c9a961] rounded-full blur-[120px]" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c9a961] rounded-full blur-[150px]" />
+      <section className="relative min-h-[70vh] xs:min-h-[80vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 xs:pt-20">
+        {/* Video Background Slider */}
+        <div className="absolute inset-0">
+          {videos.map((video, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source src={video} type="video/mp4" />
+              </video>
+            </div>
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#005baa]/90 via-[#005baa]/80 to-[#005baa]/70">
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-10 xs:top-20 left-5 xs:left-10 w-48 xs:w-72 h-48 xs:h-72 bg-[#ffffff] rounded-full blur-[80px] xs:blur-[120px]" />
+              <div className="absolute bottom-10 xs:bottom-20 right-5 xs:right-10 w-64 xs:w-96 h-64 xs:h-96 bg-[#ffffff] rounded-full blur-[100px] xs:blur-[150px]" />
+            </div>
           </div>
         </div>
 
-        <div className="container-custom relative z-10 text-center pt-20">
+        {/* Video Slider Indicators */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex space-x-2">
+            {videos.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-white w-8"
+                    : "bg-white/50 hover:bg-white/75"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="container-custom relative z-10 text-center pt-12 xs:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="max-w-7xl mx-auto px-4 xs:px-6"
           >
-            <span className="inline-block px-4 py-2 bg-[#c9a961]/20 text-[#c9a961] rounded-full text-sm font-medium mb-6">
+            <span className="inline-block px-4 xs:px-6 py-2 xs:py-3 bg-white/20 backdrop-blur-sm text-white rounded-full text-xs xs:text-sm font-bold uppercase tracking-wider mb-6 xs:mb-8">
               Since 2010 • UAE's Trusted Builder
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 xs:mb-6 leading-tight">
               Building the Future with
               <br />
-              <span className="text-[#c9a961]">Strength & Precision</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200">
+                Strength & Precision
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
-              Trusted Construction & Contracting Experts in the UAE
+            <p className="text-base xs:text-lg md:text-xl text-gray-200 mb-6 xs:mb-8 max-w-3xl xs:max-w-4xl mx-auto leading-relaxed px-2 xs:px-4">
+              Trusted Construction & Contracting Experts in the UAE delivering
+              <span className="text-white font-semibold"> excellence</span>{" "}
+              since 2010
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 xs:gap-6 justify-center items-center px-4 xs:px-6">
               <Link
                 to="/contact"
-                className="btn-primary inline-flex items-center justify-center"
+                className="group bg-white hover:bg-gray-50 text-[#005baa] font-bold py-3 xs:py-4 px-6 xs:px-8 rounded-xl inline-flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-2xl text-sm xs:text-base"
               >
                 Get a Free Consultation
-                <ArrowRight className="ml-2" size={20} />
+                <ArrowRight
+                  className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                  size={16}
+                />
               </Link>
               <Link
                 to="/projects"
-                className="btn-secondary inline-flex items-center justify-center"
+                className="group bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold py-3 xs:py-4 px-6 xs:px-8 rounded-xl inline-flex items-center justify-center transition-all duration-300 transform hover:scale-105 text-sm xs:text-base"
               >
                 View Our Projects
+                <ArrowRight
+                  className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                  size={16}
+                />
               </Link>
             </div>
           </motion.div>
@@ -192,7 +285,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-4xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 xs:gap-6 md:gap-8 mt-12 xs:mt-16 max-w-4xl xs:max-w-5xl mx-auto px-4 xs:px-6"
           >
             {[
               { number: "13+", label: "Years Experience" },
@@ -200,11 +293,16 @@ const Home = () => {
               { number: "50+", label: "Expert Team" },
               { number: "100%", label: "Client Satisfaction" },
             ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-[#c9a961] mb-2">
-                  {stat.number}
+              <div key={index} className="text-center group px-2 xs:px-4">
+                <div className="relative mb-2 xs:mb-3">
+                  <div className="text-3xl xs:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200 group-hover:scale-110 transition-transform duration-300">
+                    {stat.number}
+                  </div>
+                  <div className="absolute inset-0 text-3xl xs:text-4xl md:text-5xl font-bold text-white/20 blur-xl"></div>
                 </div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
+                <div className="text-gray-300 text-xs xs:text-sm font-medium uppercase tracking-wider">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </motion.div>
@@ -212,28 +310,34 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="section-padding bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#005baa]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#00a2e5]/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
-              <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
+              <span className="inline-block px-6 py-3 bg-gradient-to-r from-[#005baa]/10 to-[#00a2e5]/10 text-[#005baa] rounded-full text-sm font-bold uppercase tracking-wider mb-6 border border-[#005baa]/20">
                 About Us
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mt-4 mb-6">
-                Leading Construction Excellence in the UAE
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-8">
+                Leading Construction
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#005baa] to-[#00a2e5]">
+                  Excellence in the UAE
+                </span>
               </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-600 mb-6 leading-relaxed text-lg">
                 Yasir Alnoor Contracting LLC is a premier construction company,
                 leading and shaping the construction market with its
-                state-of-the-art craft and cutting-edge practices. With over 13
-                years of experience, we have built a reputation for delivering
-                exceptional quality and timely project completion.
+                state-of-the-art craft and cutting-edge practices.
               </p>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Our commitment to innovation, safety, and client satisfaction
-                has made us the preferred choice for residential, commercial,
-                and industrial construction projects across the United Arab
-                Emirates.
+              <p className="text-gray-600 mb-8 leading-relaxed text-lg">
+                With over 13 years of experience, we have built a reputation for
+                delivering exceptional quality and timely project completion
+                across the United Arab Emirates.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {[
@@ -243,45 +347,51 @@ const Home = () => {
                   "Competitive Pricing",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center">
-                    <CheckCircle2 className="text-[#c9a961] mr-2" size={20} />
-                    <span className="text-gray-700 text-sm">{item}</span>
+                    <CheckCircle2 className="text-[#005baa] mr-3" size={20} />
+                    <span className="text-gray-700 font-medium">{item}</span>
                   </div>
                 ))}
               </div>
               <Link
                 to="/about"
-                className="btn-primary inline-flex items-center"
+                className="group inline-flex items-center bg-gradient-to-r from-[#005baa] to-[#00a2e5] hover:from-[#00a2e5] hover:to-[#005baa] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 Learn More About Us
-                <ChevronRight className="ml-2" size={20} />
+                <ChevronRight
+                  className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                  size={20}
+                />
               </Link>
             </AnimatedSection>
             <AnimatedSection className="relative">
-              <div className="bg-gradient-to-br from-[#1a2744] to-[#2d3e5f] rounded-2xl p-8 text-white">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center p-4 bg-white/10 rounded-lg">
-                    <Building2
-                      className="mx-auto mb-2 text-[#c9a961]"
-                      size={32}
-                    />
-                    <div className="text-2xl font-bold">100+</div>
-                    <div className="text-sm text-gray-300">Projects</div>
-                  </div>
-                  <div className="text-center p-4 bg-white/10 rounded-lg">
-                    <Users className="mx-auto mb-2 text-[#c9a961]" size={32} />
-                    <div className="text-2xl font-bold">50+</div>
-                    <div className="text-sm text-gray-300">Experts</div>
-                  </div>
-                  <div className="text-center p-4 bg-white/10 rounded-lg">
-                    <Award className="mx-auto mb-2 text-[#c9a961]" size={32} />
-                    <div className="text-2xl font-bold">15+</div>
-                    <div className="text-sm text-gray-300">Awards</div>
-                  </div>
-                  <div className="text-center p-4 bg-white/10 rounded-lg">
-                    <Clock className="mx-auto mb-2 text-[#c9a961]" size={32} />
-                    <div className="text-2xl font-bold">13+</div>
-                    <div className="text-sm text-gray-300">Years</div>
-                  </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src="/home1.webp"
+                    alt="Construction Project 1"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src="/home2.webp"
+                    alt="Construction Project 2"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src="/home3.webp"
+                    alt="Construction Project 3"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src="/home4.webp"
+                    alt="Construction Project 4"
+                    className="w-full h-48 object-cover"
+                  />
                 </div>
               </div>
             </AnimatedSection>
@@ -290,18 +400,28 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <AnimatedSection className="text-center mb-16">
-            <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white relative">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-40 left-10 w-72 h-72 bg-[#005baa]/3 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-40 right-10 w-96 h-96 bg-[#00a2e5]/3 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center mb-20">
+            <span className="inline-block px-6 py-3 bg-gradient-to-r from-[#005baa]/10 to-[#00a2e5]/10 text-[#005baa] rounded-full text-sm font-bold uppercase tracking-wider mb-6 border border-[#005baa]/20">
               Our Services
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mt-4 mb-4">
-              Comprehensive Construction Solutions
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-8">
+              Comprehensive
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#005baa] to-[#00a2e5]">
+                Construction Solutions
+              </span>
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               From initial planning to final handover, we provide end-to-end
-              construction services tailored to your needs.
+              construction services tailored to your needs with excellence and
+              precision.
             </p>
           </AnimatedSection>
 
@@ -310,31 +430,32 @@ const Home = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {services.map((service, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group"
+                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 hover:border-[#005baa]/20 transform hover:-translate-y-2"
               >
-                <div className="w-16 h-16 bg-[#1a2744] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#c9a961] transition-colors duration-300">
-                  <service.icon
-                    className="text-[#c9a961] group-hover:text-white"
-                    size={28}
-                  />
+                <div className="w-16 h-16 bg-gradient-to-r from-[#005baa] to-[#00a2e5] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <service.icon className="text-white" size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-[#1a2744] mb-3">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#005baa] transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   {service.desc}
                 </p>
                 <Link
                   to="/services"
-                  className="inline-flex items-center mt-4 text-[#c9a961] font-medium text-sm hover:text-[#1a2744] transition"
+                  className="inline-flex items-center text-[#005baa] font-semibold hover:text-[#00a2e5] transition-colors duration-300 group"
                 >
-                  Learn More <ArrowRight size={16} className="ml-1" />
+                  Learn More
+                  <ArrowRight
+                    size={16}
+                    className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                  />
                 </Link>
               </motion.div>
             ))}
@@ -343,28 +464,41 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link
               to="/services"
-              className="btn-secondary inline-flex items-center"
+              className="group inline-flex items-center bg-gradient-to-r from-[#005baa] to-[#00a2e5] hover:from-[#00a2e5] hover:to-[#005baa] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               View All Services
-              <ArrowRight className="ml-2" size={20} />
+              <ArrowRight
+                className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                size={20}
+              />
             </Link>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-[#1a2744] text-white">
-        <div className="container-custom">
-          <AnimatedSection className="text-center mb-16">
-            <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
+      <section className="section-padding bg-gradient-to-br from-[#005baa] to-[#1F4E79] text-white relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-white/10 to-transparent"></div>
+          <div className="absolute top-20 right-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-white rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center mb-20">
+            <span className="inline-block px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold uppercase tracking-wider mb-6">
               Why Choose Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-4">
-              The Yasir Alnoor Advantage
+            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-8">
+              The Yasir Alnoor
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200">
+                Advantage
+              </span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               We combine expertise, innovation, and dedication to deliver
-              construction excellence.
+              construction excellence that exceeds expectations.
             </p>
           </AnimatedSection>
 
@@ -372,8 +506,8 @@ const Home = () => {
             {whyChooseUs.map((item, index) => (
               <AnimatedSection key={index}>
                 <div className="text-center p-6 bg-white/5 rounded-xl hover:bg-white/10 transition duration-300">
-                  <div className="w-16 h-16 bg-[#c9a961] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="text-[#1a2744]" size={28} />
+                  <div className="w-16 h-16 bg-[#ffffff] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="text-[#005baa]" size={28} />
                   </div>
                   <h3 className="text-lg font-bold mb-2">{item.title}</h3>
                   <p className="text-gray-400 text-sm">{item.desc}</p>
@@ -388,10 +522,10 @@ const Home = () => {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
+            <span className="text-[#ffffff] font-semibold text-sm uppercase tracking-wider">
               Portfolio
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mt-4 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#005baa] mt-4 mb-4">
               Featured Projects
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -413,26 +547,12 @@ const Home = () => {
                 variants={fadeInUp}
                 className="group relative overflow-hidden rounded-xl shadow-lg"
               >
-                <div className="bg-gradient-to-br from-[#1a2744] to-[#2d3e5f] h-72 flex items-center justify-center">
-                  <Building2 className="text-[#c9a961]/30" size={80} />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="inline-block px-3 py-1 bg-[#c9a961] text-white text-xs rounded-full mb-2">
-                      {project.type}
-                    </span>
-                    <h3 className="text-xl font-bold text-white mb-1">
-                      {project.name}
-                    </h3>
-                    <p className="text-gray-300 text-sm mb-2">
-                      {project.location}
-                    </p>
-                    <span
-                      className={`text-xs px-2 py-1 rounded ${project.status === "Completed" ? "bg-green-500" : "bg-blue-500"} text-white`}
-                    >
-                      {project.status}
-                    </span>
-                  </div>
+                <div className="bg-cover bg-center bg-no-repeat h-72 flex items-center justify-center">
+                  <img
+                    src={`/featured${index + 1}.webp`}
+                    alt={`Featured Project ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </motion.div>
             ))}
@@ -451,48 +571,57 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <AnimatedSection className="text-center mb-16">
-            <span className="text-[#c9a961] font-semibold text-sm uppercase tracking-wider">
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white relative">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#005baa]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#00a2e5]/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center mb-20">
+            <span className="inline-block px-6 py-3 bg-gradient-to-r from-[#005baa]/10 to-[#00a2e5]/10 text-[#005baa] rounded-full text-sm font-bold uppercase tracking-wider mb-6 border border-[#005baa]/20">
               Testimonials
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mt-4 mb-4">
-              What Our Clients Say
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-8">
+              What Our
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#005baa] to-[#00a2e5]">
+                Clients Say
+              </span>
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Hear from our satisfied clients about their experience working
-              with us.
+              with us and the exceptional results we deliver.
             </p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <AnimatedSection key={index}>
-                <div className="bg-white p-8 rounded-xl shadow-sm h-full flex flex-col">
-                  <Quote className="text-[#c9a961] mb-4" size={32} />
-                  <p className="text-gray-600 mb-6 flex-grow italic leading-relaxed">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 h-full flex flex-col border border-gray-100 hover:border-[#005baa]/20 transform hover:-translate-y-2">
+                  <Quote className="text-[#005baa] mb-6" size={40} />
+                  <p className="text-gray-700 mb-8 flex-grow italic leading-relaxed text-lg">
                     "{testimonial.text}"
                   </p>
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-[#1a2744] rounded-full flex items-center justify-center text-[#c9a961] font-bold text-lg mr-4">
+                    <div className="w-14 h-14 bg-gradient-to-r from-[#005baa] to-[#00a2e5] rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
                       {testimonial.name[0]}
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#1a2744]">
+                      <h4 className="font-bold text-gray-900 text-lg">
                         {testimonial.name}
                       </h4>
-                      <p className="text-gray-500 text-sm">
+                      <p className="text-gray-600 font-medium">
                         {testimonial.role}
                       </p>
                     </div>
                   </div>
-                  <div className="flex mt-4">
+                  <div className="flex mt-6">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className="text-[#c9a961] fill-[#c9a961]"
-                        size={16}
+                        className="text-[#00a2e5] fill-[#00a2e5]"
+                        size={20}
                       />
                     ))}
                   </div>
@@ -504,30 +633,52 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-[#1a2744] to-[#2d3e5f] text-white">
-        <div className="container-custom">
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#005baa]/5 to-[#00a2e5]/5"></div>
+          <div className="absolute top-20 right-20 w-64 h-64 bg-[#005baa]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#00a2e5]/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container-custom relative z-10">
           <AnimatedSection className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Start Your Project?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Contact us today for a free consultation and let us bring your
-              vision to life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="btn-primary inline-flex items-center justify-center"
-              >
-                <Phone className="mr-2" size={20} />
-                Get a Free Quote
-              </Link>
-              <a
-                href="tel:+97141234567"
-                className="btn-secondary inline-flex items-center justify-center"
-              >
-                Call Us Now
-              </a>
+            <div className="bg-gradient-to-r from-[#005baa] to-[#00a2e5] rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full blur-2xl"></div>
+              </div>
+
+              <div className="relative z-10">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Ready to Start Your Project?
+                </h2>
+                <p className="text-xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+                  Contact us today for a free consultation and let us bring your
+                  vision to life with our expertise and commitment to
+                  excellence.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                  <Link
+                    to="/contact"
+                    className="group bg-white hover:bg-gray-50 text-[#005baa] font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center justify-center"
+                  >
+                    <Phone className="mr-2" size={20} />
+                    Get a Free Quote
+                    <ArrowRight
+                      className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                      size={20}
+                    />
+                  </Link>
+                  <a
+                    href="tel:+97141234567"
+                    className="bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 inline-flex items-center justify-center"
+                  >
+                    Call Us Now
+                  </a>
+                </div>
+              </div>
             </div>
           </AnimatedSection>
         </div>
