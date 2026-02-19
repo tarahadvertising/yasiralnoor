@@ -65,17 +65,30 @@ const Layout = () => {
             </a>
           </div>
           <div className="flex items-center space-x-2 xs:space-x-4">
-            <a href="#" className="hover:text-[#00a2e5] transition">
-              <Facebook size={14} className="xs:size-16" />
+            <a
+              href="#"
+              className="hover:text-[#00a2e5] transition opacity-50 cursor-not-allowed"
+              title="Facebook - Coming Soon"
+            >
+              <Facebook size={12} className="xs:size-14" />
             </a>
-            <a href="#" className="hover:text-[#00a2e5] transition">
-              <Twitter size={14} className="xs:size-16" />
+            <a
+              href="https://wa.me/971544018604"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#00a2e5] transition"
+              title="WhatsApp"
+            >
+              <Phone size={12} className="xs:size-14" />
             </a>
-            <a href="#" className="hover:text-[#00a2e5] transition">
-              <Linkedin size={14} className="xs:size-16" />
-            </a>
-            <a href="#" className="hover:text-[#00a2e5] transition">
-              <Instagram size={14} className="xs:size-16" />
+            <a
+              href="https://www.instagram.com/yasiralnoorcontracting?igsh=MW9wODdoYjlhYTRnbA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#00a2e5] transition"
+              title="Instagram"
+            >
+              <Instagram size={12} className="xs:size-14" />
             </a>
           </div>
         </div>
@@ -120,9 +133,9 @@ const Layout = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
-                <X size={20} className="xs:size-24" />
+                <X size={18} className="xs:size-20" />
               ) : (
-                <Menu size={20} className="xs:size-24" />
+                <Menu size={18} className="xs:size-20" />
               )}
             </button>
           </div>
@@ -152,14 +165,16 @@ const Layout = () => {
                 href="tel:+971582365647"
                 className="flex items-center text-gray-700 hover:text-[#005baa] transition text-sm"
               >
-                <Phone size={16} className="mr-2" />
+                <ChevronRight size={10} className="xs:size-12 mr-1 xs:mr-2" />
+                <Phone size={12} className="xs:size-14 mr-1 xs:mr-2" />
                 +971 58 236 5647
               </a>
               <a
                 href="mailto:info@yasiralnoorbc.com"
                 className="flex items-center text-gray-700 hover:text-[#005baa] transition text-sm"
               >
-                <Mail size={16} className="mr-2" />
+                <ChevronRight size={10} className="xs:size-12 mr-1 xs:mr-2" />
+                <Mail size={12} className="xs:size-14 mr-1 xs:mr-2" />
                 info@yasiralnoorbc.com
               </a>
             </div>
@@ -194,30 +209,31 @@ const Layout = () => {
                 Building excellence through innovation and quality craftsmanship
                 since 2010. Your trusted construction partner in the UAE.
               </p>
-              <div className="flex space-x-3 xs:space-x-4">
+              <div className="flex space-x-1 xs:space-x-2">
                 <a
                   href="#"
-                  className="w-8 h-8 xs:w-10 xs:h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#00a2e5] transition"
+                  className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#00a2e5] transition opacity-50 cursor-not-allowed"
+                  title="Facebook - Coming Soon"
                 >
-                  <Facebook size={14} className="xs:size-18" />
+                  <Facebook size={8} className="xs:size-10" />
                 </a>
                 <a
-                  href="#"
-                  className="w-8 h-8 xs:w-10 xs:h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#00a2e5] transition"
+                  href="https://wa.me/971544018604"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#25D366] transition"
+                  title="WhatsApp"
                 >
-                  <Twitter size={14} className="xs:size-18" />
+                  <Phone size={8} className="xs:size-10" />
                 </a>
                 <a
-                  href="#"
-                  className="w-8 h-8 xs:w-10 xs:h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#00a2e5] transition"
+                  href="https://www.instagram.com/yasiralnoorcontracting?igsh=MW9wODdoYjlhYTRnbA=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#E4405F] transition"
+                  title="Instagram"
                 >
-                  <Linkedin size={14} className="xs:size-18" />
-                </a>
-                <a
-                  href="#"
-                  className="w-8 h-8 xs:w-10 xs:h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#00a2e5] transition"
-                >
-                  <Instagram size={14} className="xs:size-18" />
+                  <Instagram size={8} className="xs:size-10" />
                 </a>
               </div>
             </div>
@@ -307,8 +323,8 @@ const Layout = () => {
               <div className="space-y-3 xs:space-y-4">
                 <div className="flex items-start">
                   <MapPin
-                    size={16}
-                    className="xs:size-18 mr-2 xs:mr-3 text-[#005baa] flex-shrink-0 mt-1"
+                    size={4}
+                    className="xs:size-6 mr-1 xs:mr-2 text-[#005baa] flex-shrink-0 mt-1"
                   />
                   <div>
                     <p className="text-gray-600 text-sm leading-relaxed">
@@ -318,22 +334,30 @@ const Layout = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-start">
                   <Phone
-                    size={16}
-                    className="xs:size-18 mr-2 xs:mr-3 text-[#005baa] flex-shrink-0"
+                    size={4}
+                    className="xs:size-6 mr-1 xs:mr-2 text-[#005baa] flex-shrink-0 mt-1"
                   />
-                  <a
-                    href="tel:+971582365647"
-                    className="text-gray-600 hover:text-[#005baa] transition text-sm"
-                  >
-                    +971 58 236 5647
-                  </a>
+                  <div>
+                    <a
+                      href="tel:+971582365647"
+                      className="text-gray-600 hover:text-[#005baa] transition text-sm block"
+                    >
+                      +971 58 236 5647
+                    </a>
+                    <a
+                      href="tel:043460603"
+                      className="text-gray-600 hover:text-[#005baa] transition text-sm block"
+                    >
+                      043460603
+                    </a>
+                  </div>
                 </div>
                 <div className="flex items-center">
                   <Mail
-                    size={16}
-                    className="xs:size-18 mr-2 xs:mr-3 text-[#005baa] flex-shrink-0"
+                    size={4}
+                    className="xs:size-6 mr-1 xs:mr-2 text-[#005baa] flex-shrink-0"
                   />
                   <a
                     href="mailto:info@yasiralnoorbc.com"
@@ -347,25 +371,19 @@ const Layout = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="border-t border-gray-200 mt-12 pt-8 flex justify-center items-center">
             <p className="text-gray-600 text-sm">
-              2024 YASIR ALNOOR Building Contracting L.L.C. All rights © 2024
-              YASIR ALNOOR Building Contracting L.L.C. All rights reserved.
+              © 2024{" "}
+              <a
+                href="https://tarah.ae/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#005baa] transition font-medium"
+              >
+                Tarah advertising
+              </a>
+              {". All rights reserved."}
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a
-                href="#"
-                className="text-gray-600 hover:text-[#005baa] transition text-sm"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-gray-600 hover:text-[#005baa] transition text-sm"
-              >
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </footer>

@@ -234,27 +234,27 @@ const Contact = () => {
                   <div className="flex space-x-4">
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
+                      className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
-                      <Facebook size={18} />
+                      <Facebook size={14} />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
+                      className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
-                      <Twitter size={18} />
+                      <Twitter size={14} />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
+                      className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
-                      <Linkedin size={18} />
+                      <Linkedin size={14} />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
+                      className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
-                      <Instagram size={18} />
+                      <Instagram size={14} />
                     </a>
                   </div>
                 </div>
