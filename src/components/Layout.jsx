@@ -328,9 +328,9 @@ const Layout = () => {
                   />
                   <div>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      Office 1201, Al Saqr Tower,
+                      #14 B6 Block, Xavier Business Center,
                       <br className="hidden xs:block" />
-                      Sheikh Zayed Road, Dubai, UAE
+                      Burj Nahar Mall, Al Muteena, Dubai
                     </p>
                   </div>
                 </div>
