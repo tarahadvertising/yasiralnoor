@@ -11,6 +11,8 @@ import {
   Linkedin,
   Instagram,
   ChevronRight,
+  PhoneCall,
+  MessageCircle,
 } from "lucide-react";
 import WhatsAppButton from "./WhatsAppButton";
 
@@ -35,6 +37,7 @@ const Layout = () => {
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
     { path: "/services", label: "Services" },
+    { path: "/cleaning-services", label: "Cleaning" },
     { path: "/projects", label: "Projects" },
     { path: "/contact", label: "Contact" },
   ];
@@ -209,31 +212,26 @@ const Layout = () => {
                 Building excellence through innovation and quality craftsmanship
                 since 2010. Your trusted construction partner in the UAE.
               </p>
-              <div className="flex space-x-1 xs:space-x-2">
-                <a
-                  href="#"
-                  className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#00a2e5] transition opacity-50 cursor-not-allowed"
-                  title="Facebook - Coming Soon"
-                >
-                  <Facebook size={8} className="xs:size-10" />
-                </a>
+
+              {/* Social Media Icons */}
+              <div className="flex items-center space-x-3 xs:space-x-4">
                 <a
                   href="https://wa.me/971544018604"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#25D366] transition"
-                  title="WhatsApp"
+                  className="text-gray-600 hover:text-[#25D366] transition-colors"
+                  aria-label="WhatsApp"
                 >
-                  <Phone size={8} className="xs:size-10" />
+                  <MessageCircle size={16} className="xs:size-5" />
                 </a>
                 <a
                   href="https://www.instagram.com/yasiralnoorcontracting?igsh=MW9wODdoYjlhYTRnbA=="
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#E4405F] transition"
-                  title="Instagram"
+                  className="text-gray-600 hover:text-[#E4405F] transition-colors"
+                  aria-label="Instagram"
                 >
-                  <Instagram size={8} className="xs:size-10" />
+                  <Instagram size={16} className="xs:size-5" />
                 </a>
               </div>
             </div>
@@ -306,6 +304,14 @@ const Layout = () => {
                 </li>
                 <li>
                   <Link
+                    to="/cleaning-services"
+                    className="text-gray-600 hover:text-[#005baa] transition text-sm"
+                  >
+                    Cleaning Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/services"
                     className="text-gray-600 hover:text-[#005baa] transition text-sm"
                   >
@@ -322,23 +328,36 @@ const Layout = () => {
               </h4>
               <div className="space-y-3 xs:space-y-4">
                 <div className="flex items-start">
-                  <MapPin
-                    size={4}
-                    className="xs:size-6 mr-1 xs:mr-2 text-[#005baa] flex-shrink-0 mt-1"
-                  />
+                  <a
+                    href="https://www.google.com/maps/dir/25.2737404,55.3162521/Yasir+Alnoor+Construction,+Al+Muteena+-+Deira+-+Dubai/@25.2737411,55.313511,17z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3e5f5d9e06b50917:0x9db0bbc0236bcb4f!2m2!1d55.3162067!2d25.2736559?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#005baa] hover:text-[#00a2e5] transition-colors flex-shrink-0 mt-1 mr-1 xs:mr-2"
+                    aria-label="Location on Google Maps"
+                  >
+                    <MapPin size={3} className="xs:size-4" />
+                  </a>
                   <div>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <a
+                      href="https://www.google.com/maps/dir/25.2737404,55.3162521/Yasir+Alnoor+Construction,+Al+Muteena+-+Deira+-+Dubai/@25.2737411,55.313511,17z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3e5f5d9e06b50917:0x9db0bbc0236bcb4f!2m2!1d55.3162067!2d25.2736559?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-[#005baa] transition text-sm leading-relaxed block"
+                    >
                       #14 B6 Block, Xavier Business Center,
                       <br className="hidden xs:block" />
                       Burj Nahar Mall, Al Muteena, Dubai
-                    </p>
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Phone
-                    size={4}
-                    className="xs:size-6 mr-1 xs:mr-2 text-[#005baa] flex-shrink-0 mt-1"
-                  />
+                  <a
+                    href="tel:+971582365647"
+                    className="text-[#005baa] hover:text-[#00a2e5] transition-colors flex-shrink-0 mt-1 mr-1 xs:mr-2"
+                    aria-label="Call mobile phone"
+                  >
+                    <Phone size={3} className="xs:size-4" />
+                  </a>
                   <div>
                     <a
                       href="tel:+971582365647"
@@ -346,19 +365,33 @@ const Layout = () => {
                     >
                       +971 58 236 5647
                     </a>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <a
+                    href="tel:+97143460603"
+                    className="text-[#005baa] hover:text-[#00a2e5] transition-colors flex-shrink-0 mt-1 mr-1 xs:mr-2"
+                    aria-label="Call landline"
+                  >
+                    <PhoneCall size={3} className="xs:size-4" />
+                  </a>
+                  <div>
                     <a
-                      href="tel:043460603"
-                      className="text-gray-600 hover:text-[#005baa] transition text-sm block"
+                      href="tel:+97143460603"
+                      className="text-gray-600 hover:text-[#005baa] transition text-sm"
                     >
-                      043460603
+                      +971 4 346 0603
                     </a>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <Mail
-                    size={4}
-                    className="xs:size-6 mr-1 xs:mr-2 text-[#005baa] flex-shrink-0"
-                  />
+                  <a
+                    href="mailto:info@yasiralnoorbc.com"
+                    className="text-[#005baa] hover:text-[#00a2e5] transition-colors flex-shrink-0 mr-1 xs:mr-2"
+                    aria-label="Send email"
+                  >
+                    <Mail size={3} className="xs:size-4" />
+                  </a>
                   <a
                     href="mailto:info@yasiralnoorbc.com"
                     className="text-gray-600 hover:text-[#005baa] transition text-sm"
@@ -373,16 +406,15 @@ const Layout = () => {
           {/* Bottom Bar */}
           <div className="border-t border-gray-200 mt-12 pt-8 flex justify-center items-center">
             <p className="text-gray-600 text-sm">
-              © 2024{" "}
+              Copyright © yasiralnoor | Designed by{" "}
               <a
                 href="https://tarah.ae/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-[#005baa] transition font-medium"
               >
-                Tarah advertising
+                tarah.ae
               </a>
-              {". All rights reserved."}
             </p>
           </div>
         </div>

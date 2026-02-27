@@ -13,6 +13,7 @@ import {
   Linkedin,
   Instagram,
   ArrowRight,
+  MessageCircle,
 } from "lucide-react";
 import SEO from "../components/SEO";
 
@@ -175,10 +176,7 @@ const Contact = () => {
               Contact Us
             </span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Get in
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200">
-                Touch
-              </span>
+              Get in Touch
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
               Ready to start your next project?
@@ -232,27 +230,27 @@ const Contact = () => {
                 <div className="mt-8 pt-8 border-t border-white/10">
                   <h4 className="font-semibold mb-4">Follow Us</h4>
                   <div className="flex space-x-4">
-                    <a
+                    {/* <a
                       href="#"
                       className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
                       <Facebook size={14} />
-                    </a>
-                    <a
+                    </a> */}
+                    {/* <a
                       href="#"
                       className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
                     >
                       <Twitter size={14} />
-                    </a>
+                    </a> */}
                     <a
-                      href="#"
-                      className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
+                      href="https://wa.me/971544018604"
+                      className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#005baa] transition"
                     >
-                      <Linkedin size={14} />
+                      <MessageCircle size={14} />
                     </a>
                     <a
-                      href="#"
-                      className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] transition"
+                      href="https://www.instagram.com/yasiralnoorcontracting?igsh=MW9wODdoYjlhYTRnbA=="
+                      className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#005baa] transition"
                     >
                       <Instagram size={14} />
                     </a>
@@ -329,7 +327,7 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#00a2e5] focus:ring-1 focus:ring-[#00a2e5] transition"
-                          placeholder="+971 50 123 4567"
+                          placeholder="+971 00 000 0000"
                         />
                       </div>
                       <div>

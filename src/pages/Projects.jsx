@@ -266,10 +266,7 @@ const Projects = () => {
               Our Portfolio
             </span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Our
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200">
-                Projects
-              </span>
+              Our Projects
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
               Showcasing our portfolio of exceptional construction projects
